@@ -929,16 +929,16 @@ module.exports = function bind(fn, thisArg) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ exports["a"] = Vue.component('SingleSnippet', {
+var SingleSnippet = Vue.component('SingleSnippet', {
 	props: ['snippet'],
-	template: '\n\t\t<article class="snippet" >\n\t\t    <div class="is-flex">\n\t\t        <h4 class="title is-4 flex">\n\t\t        \t<router-link :to="\'/snippets/\' + snippet.id">\n\t\t            \t<a v-text="snippet.title"></a>\n\t\t            </router-link>\n\t\t             by\n\t\t            <a :href="\'@\' + snippet.user.username" v-text="snippet.user.username"></a>\n\t\t        </h4>\n\t\t        <a :href="\'/snippets/\' + snippet.id + \'/fork\'">Fork me</a>\n\t\t    </div>\n\n\n\t\t        <a class="tag is-warning" \n\t\t        v-show="snippet.language_id"\n\t\t        :href="\'/languages/\' + snippet.language.id + \'/\' + snippet.language.slug">\n\t\t        {{snippet.language.language}}\n\t\t        </a>\n\t\t                    <br>\n\t\t                    <br>\n\n\t\t    <pre><code>{{ snippet.body }}</code></pre>\n\t\t</article>\n\t',
+	template: '\n\t\t<article class="snippet" >\n\t\t    <div class="is-flex">\n\t\t        <h4 class="title is-4 flex">\n\t\t        \t<router-link :to="\'/snippets/\' + snippet.id">\n\t\t            \t<a v-text="snippet.title"></a>\n\t\t            </router-link>\n\t\t             by\n\t\t            <a :href="\'@\' + snippet.user.username" v-text="snippet.user.username"></a>\n\t\t        </h4>\n\t\t        <a :href="\'/snippets/\' + snippet.id + \'/fork\'">Fork me</a>\n\t\t    </div>\n\n\t\t\t<nav class="level">\n\t\t        <div class="level-left">\n\t\t\t        <a class="level-item tag is-warning" \n\t\t\t        v-show="snippet.language_id"\n\t\t\t        :href="\'/languages/\' + snippet.language.id + \'/\' + snippet.language.slug">\n\t\t\t        {{snippet.language.language}}\n\t\t\t        </a>\n\t\t\t        <a class="level-item">\n\t\t\t          <span class="icon is-small"><i class="fa fa-heart"></i> </span>&nbsp;<span>1</span>\n\t\t\t        </a>\n\t\t\t    </div>\n\t\t\t</nav>\n\t\t\t\n\n\t\t    <pre><code>{{ snippet.body }}</code></pre>\n\t\t</article>\n\t',
 
 	created: function created() {
 		console.log('Loading snippet:  ' + this.snippet.title);
 	}
 });
 
-// export default SingleSnippet;
+/* harmony default export */ exports["a"] = SingleSnippet;
 
 /***/ }),
 /* 9 */
@@ -4413,11 +4413,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
         var id = this.$route.params.id;
         // Snippet.getOne(id, snippet => this.snippet = (snippet)); 
-        // this.$Progress.start();
+        this.$Progress.start();
         __WEBPACK_IMPORTED_MODULE_0__models_Snippet__["a" /* default */].getOne(id, function (snippets) {
             console.log(snippets);
             _this.snippets = snippets;
-            // this.$Progress.finish();
+            _this.$Progress.finish();
             console.log(_this.snippets[0].title);
         });
     }
@@ -4446,6 +4446,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
 
 window.Vue = __WEBPACK_IMPORTED_MODULE_0_vue___default.a;
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.debug = true;
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router___default.a);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_progressbar___default.a, {
@@ -4483,7 +4486,7 @@ var routes = [{
 
 /* harmony default export */ exports["a"] = new __WEBPACK_IMPORTED_MODULE_0_vue_router___default.a({
 	routes: routes,
-	// mode: 'history',
+	mode: 'history',
 	linkActiveClass: 'is-active'
 });
 

@@ -30,11 +30,11 @@
             
             let id = this.$route.params.id;
             // Snippet.getOne(id, snippet => this.snippet = (snippet)); 
-            // this.$Progress.start();
+            this.$Progress.start();
             Snippet.getOne(id, (snippets) => {
                 console.log(snippets);
                 this.snippets = snippets;
-                // this.$Progress.finish();
+                this.$Progress.finish();
                 console.log(this.snippets[0].title);
             }); 
         }

@@ -44,6 +44,7 @@ class SnippetsController extends Controller
 
     public function show(Snippet $snippet)
     {
+        // return Snippet::with('user', 'language')->find($snippet->id);
         return Snippet::with('user', 'language')->whereId($snippet->id)->get();
     	// return view('snippets.show', compact('snippet'));
     }

@@ -17,3 +17,5 @@ Route::group(['middleware' => 'auth.socialite'], function () {
 	Route::get('/snippets/{snippet}/fork', 'SnippetsController@create');
 });
 
+Route::get('{path}', 'HomeController@index')->where( 'path', '([A-z\d-\/_.]+)?' );
+

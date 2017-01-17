@@ -1,4 +1,4 @@
-export default Vue.component('SingleSnippet',  {
+let SingleSnippet = Vue.component('SingleSnippet',  {
 	props: ['snippet'],
 	template: `
 		<article class="snippet" >
@@ -13,14 +13,19 @@ export default Vue.component('SingleSnippet',  {
 		        <a :href="'/snippets/' + snippet.id + '/fork'">Fork me</a>
 		    </div>
 
-
-		        <a class="tag is-warning" 
-		        v-show="snippet.language_id"
-		        :href="'/languages/' + snippet.language.id + '/' + snippet.language.slug">
-		        {{snippet.language.language}}
-		        </a>
-		                    <br>
-		                    <br>
+			<nav class="level">
+		        <div class="level-left">
+			        <a class="level-item tag is-warning" 
+			        v-show="snippet.language_id"
+			        :href="'/languages/' + snippet.language.id + '/' + snippet.language.slug">
+			        {{snippet.language.language}}
+			        </a>
+			        <a class="level-item">
+			          <span class="icon is-small"><i class="fa fa-heart"></i> </span>&nbsp;<span>1</span>
+			        </a>
+			    </div>
+			</nav>
+			
 
 		    <pre><code>{{ snippet.body }}</code></pre>
 		</article>
@@ -31,4 +36,4 @@ export default Vue.component('SingleSnippet',  {
 	}
 });
 
-// export default SingleSnippet;
+export default SingleSnippet;

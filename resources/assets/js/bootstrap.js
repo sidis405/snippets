@@ -7,6 +7,10 @@ import VueProgressBar from 'vue-progressbar'
 
 
 window.Vue = Vue;
+
+Vue.config.debug = true;
+
+
 Vue.use(VueRouter);
 
 Vue.use(VueProgressBar, {
